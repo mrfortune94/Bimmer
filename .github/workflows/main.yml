@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - automate-rebuild-apk
+      - copilot/extract-data-functionality
+  workflow_dispatch:
 
 jobs:
   build-and-sign-apk:
