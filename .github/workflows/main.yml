@@ -1,0 +1,51 @@
+name: Rebuild and Sign APK
+
+on:
+  push:
+    branches:
+      - automate-rebuild-apk
+
+jobs:
+  build-and-sign-apk:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up APKTool
+      run: |
+        wget https://github.com/iBotPeaches/Apktool/releases/download/v2.7.0/apktool_2.7.0.jar -O apktool.jar
+        echo "java -jar apktool.jar \"$@\"" > apktool
+        chmod +x apktool
+        sudo mv apktool /usr/local/bin/
+
+    - name: Extract decompiled APK zip
+      run: |
+        mkdir -p decompiled_apk
+        unzip decompiled_apk.zip -d decompiled_apk
+
+    - name: Rebuild APK using APKTool
+      run: |
+        apktool b decompiled_apk -o rebuilt_apk.apk
+
+    - name: Sign APK using jarsigner
+      env:
+        KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+        KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+      run: |
+        echo ${{ secrets.KEYSTORE }} | base64 -d > keystore.jks
+        jarsigner -keystore keystore.jks -storepass "$KEYSTORE_PASSWORD" rebuilt_apk.apk "$KEY_ALIAS"
+
+    - name: Optimize APK with zipalign
+      run: |
+        wget https://dl.google.com/android/repository/build-tools_r31.0.0-linux.zip
+        unzip -j build-tools_r31.0.0-linux.zip "*/zipalign" -d ./
+        chmod +x zipalign
+        ./zipalign -f 4 rebuilt_apk.apk signed_aligned_apk.apk
+
+    - name: Upload Signed APK
+      uses: actions/upload-artifact@v3
+      with:
+        name: Signed-APK
+        path: signed_aligned_apk.apk
