@@ -1,52 +1,52 @@
-name: Rebuild and Sign APK
+name: Build BimmerLink APK
 
 on:
   push:
-    branches:
-      - main
-      - automate-rebuild-apk
-      - copilot/extract-data-functionality
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
-  build-and-sign-apk:
+  build:
     runs-on: ubuntu-latest
-
+    
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Set up Java (Required for APKTool)
-      uses: actions/setup-java@v4
+    - uses: actions/checkout@v3
+    
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
       with:
         distribution: 'temurin'
         java-version: '17'
-
-    - name: Set up APKTool
+    
+    - name: Install build tools
       run: |
-        set -e  # Exit on any error
-        wget https://github.com/iBotPeaches/Apktool/releases/download/v2.7.0/apktool_2.7.0.jar -O apktool.jar
-        echo "APKTool downloaded successfully"
-        
-        # Move apktool.jar to a fixed location
-        sudo mkdir -p /opt/apktool
-        sudo mv apktool.jar /opt/apktool/
-        
-        # Create wrapper script that references the correct location
-        cat > apktool <<-'EOF'
-        	#!/bin/bash
-        	exec java -jar /opt/apktool/apktool.jar "$@"
-        	EOF
-        
+        sudo apt-get update
+        sudo apt-get install -y zipalign apksigner
+    
+    - name: Download APKTool
+      run: |
+        wget https://raw.githubusercontent.com/iBotPeaches/Apktool/master/scripts/linux/apktool
+        wget https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.9.3.jar
         chmod +x apktool
         sudo mv apktool /usr/local/bin/
+        sudo mv apktool_2.9.3.jar /usr/local/bin/apktool.jar
+    
+    - name: Verify APKTool installation
+      run: apktool --version
+    
+    - name: Download and verify ZIP file
+      run: |
+        set -e
+        echo "Downloading ZIP file..."
+        wget "https://www.apk.gold/download/BimmerLink.ver.2.36.6-6860.build.6860.apk_Decompiler.com.zip"
         
-        # VERIFY it works
-        apktool --version || {
-          echo "ERROR: APKTool setup failed"
-          exit 1
-        }
-        echo "APKTool setup successful"
+        echo "ZIP file size:"
+        ls -lh "BimmerLink.ver.2.36.6-6860.build.6860.apk_Decompiler.com.zip"
+        
+        echo "ZIP file contents:"
+        unzip -l "BimmerLink.ver.2.36.6-6860.build.6860.apk_Decompiler.com.zip" || true
 
     - name: Extract ZIP and verify contents
       run: |
@@ -54,10 +54,8 @@ jobs:
         mkdir -p extracted_apks
         
         echo "=== Extracting ZIP file ==="
-        unzip -o "BimmerLink.ver.2.36.6-6860.build.6860.apk_Decompiler.com.zip" -d extracted_apks || {
-          echo "ERROR: Failed to extract ZIP"
-          exit 1
-        }
+        unzip -o "BimmerLink.ver.2.36.6-6860.build.6860.apk_Decompiler.com.zip" -d extracted_apks
+        # Allow warnings - unzip returns non-zero on path warnings but files extract fine
         
         echo "=== Extracted files ==="
         find extracted_apks -type f
@@ -82,118 +80,56 @@ jobs:
         }
         echo "base.apk verification successful"
 
-    - name: Decompile APK with APKTool
+    - name: Decompile APK
       run: |
-        set -e
-        echo "=== Decompiling APK from: $BASE_APK_PATH ==="
-        
-        apktool d "$BASE_APK_PATH" -o decompiled_apk -f || {
-          echo "ERROR: APKTool decompilation failed"
-          echo "Retrying with verbose output..."
-          apktool d "$BASE_APK_PATH" -o decompiled_apk -f -v
-          exit 1
-        }
-        
-        echo "=== Decompilation successful ==="
-        ls -la decompiled_apk/
-
-    - name: Add LICENSE file
+        echo "Decompiling $BASE_APK_PATH..."
+        apktool d "$BASE_APK_PATH" -o decompiled -f
+    
+    - name: List decompiled contents
       run: |
-        set -e
-        mkdir -p decompiled_apk/assets
-        
-        cat > decompiled_apk/assets/LICENSE.txt <<-'EOF'
-        	MIT License
-        	
-        	Copyright (c) 2025 BimmerLink
-        	
-        	Permission is hereby granted, free of charge, to any person obtaining a copy
-        	of this software and associated documentation files (the "Software"), to deal
-        	in the Software without restriction, including without limitation the rights
-        	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-        	copies of the Software, and to permit persons to whom the Software is
-        	furnished to do so, subject to the following conditions:
-        	
-        	The above copyright notice and this permission notice shall be included in all
-        	copies or substantial portions of the Software.
-        	
-        	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-        	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-        	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-        	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-        	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-        	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-        	SOFTWARE.
-        	EOF
-        
-        echo "LICENSE file created successfully"
-
-    - name: Rebuild APK using APKTool
+        echo "Decompiled structure:"
+        ls -la decompiled/
+    
+    - name: Modify AndroidManifest.xml
       run: |
-        set -e
-        echo "=== Rebuilding APK ==="
-        apktool b decompiled_apk -o rebuilt_apk.apk || {
-          echo "ERROR: Rebuild failed"
-          apktool b decompiled_apk -o rebuilt_apk.apk -v
-          exit 1
-        }
-        echo "=== Rebuild successful ==="
-        ls -lh rebuilt_apk.apk
-
-    - name: Upload Debug (Unsigned) APK
-      uses: actions/upload-artifact@v4
+        echo "Original AndroidManifest.xml:"
+        cat decompiled/AndroidManifest.xml
+        
+        # Remove debuggable="false" if present and add debuggable="true"
+        sed -i 's/android:debuggable="false"//g' decompiled/AndroidManifest.xml
+        sed -i 's/<application /<application android:debuggable="true" /' decompiled/AndroidManifest.xml
+        
+        echo "Modified AndroidManifest.xml:"
+        cat decompiled/AndroidManifest.xml
+    
+    - name: Rebuild APK
+      run: |
+        echo "Rebuilding APK..."
+        apktool b decompiled -o BimmerLink-debug-unsigned.apk
+    
+    - name: Generate keystore
+      run: |
+        keytool -genkeypair -v -keystore my-release-key.jks \
+          -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000 \
+          -storepass android -keypass android \
+          -dname "CN=Android Debug,O=Android,C=US"
+    
+    - name: Sign APK
+      run: |
+        apksigner sign --ks my-release-key.jks \
+          --ks-key-alias my-key-alias \
+          --ks-pass pass:android \
+          --key-pass pass:android \
+          --out BimmerLink-debug.apk \
+          BimmerLink-debug-unsigned.apk
+    
+    - name: Verify APK signature
+      run: |
+        apksigner verify BimmerLink-debug.apk
+        echo "APK signed successfully!"
+    
+    - name: Upload APK
+      uses: actions/upload-artifact@v3
       with:
-        name: Debug-Unsigned-APK
-        path: rebuilt_apk.apk
-
-    - name: Download and set up zipalign from Google
-      run: |
-        set -e
-        echo "=== Downloading build-tools ==="
-        wget https://dl.google.com/android/repository/build-tools_r31.0.0-linux.zip
-        unzip -j build-tools_r31.0.0-linux.zip "*/zipalign" -d ./ || {
-          echo "ERROR: Failed to extract zipalign"
-          exit 1
-        }
-        chmod +x zipalign
-        ./zipalign -h >/dev/null 2>&1 || echo "zipalign ready"
-
-    - name: Optimize APK with zipalign (before signing)
-      run: |
-        set -e
-        echo "=== Running zipalign ==="
-        ./zipalign -v -f 4 rebuilt_apk.apk aligned_apk.apk || {
-          echo "ERROR: zipalign failed"
-          exit 1
-        }
-        echo "=== Zipalign successful ==="
-        ls -lh aligned_apk.apk
-
-    - name: Generate new keystore
-      run: |
-        set -e
-        keytool -genkey -v -keystore bimmer.keystore -alias bimmer -keyalg RSA -keysize 2048 -validity 10000 \
-          -storepass bimmer2025 -keypass bimmer2025 \
-          -dname "CN=mrfortune94, OU=BimmerLink, O=BimmerLink, L=Unknown, S=Unknown, C=US"
-        echo "=== Keystore created successfully ==="
-
-    - name: Sign APK using jarsigner
-      run: |
-        set -e
-        echo "=== Signing APK ==="
-        jarsigner -verbose -sigalg SHA256withRSA -digestalg SHA-256 \
-          -keystore bimmer.keystore -storepass bimmer2025 -keypass bimmer2025 \
-          aligned_apk.apk bimmer
-        
-        echo "=== Verifying signature ==="
-        jarsigner -verify -verbose -certs aligned_apk.apk || {
-          echo "ERROR: Signature verification failed"
-          exit 1
-        }
-        echo "=== APK signed and verified successfully ==="
-
-    - name: Upload Signed APK
-      uses: actions/upload-artifact@v4
-      with:
-        name: Signed-APK
-        path: aligned_apk.apk
+        name: BimmerLink-debug
+        path: BimmerLink-debug.apk
