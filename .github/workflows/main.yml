@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Set up APKTool
       run: |
@@ -81,7 +81,7 @@ jobs:
           aligned_apk.apk bimmer
 
     - name: Upload Signed APK
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: Signed-APK
         path: aligned_apk.apk
