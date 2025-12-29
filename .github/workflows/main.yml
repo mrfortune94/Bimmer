@@ -53,8 +53,7 @@ jobs:
         mkdir -p extracted_apks
         
         echo "=== Extracting ZIP file ==="
-        unzip -o "BimmerLink.ver.2.36.6-6860.build.6860.apk_Decompiler.com.zip" -d extracted_apks
-        # Allow warnings - unzip returns non-zero on path warnings but files extract fine
+        unzip -o "BimmerLink.ver.2.36.6-6860.build.6860.apk_Decompiler.com.zip" -d extracted_apks || true
         
         echo "=== Extracted files ==="
         find extracted_apks -type f
