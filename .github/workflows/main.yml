@@ -29,8 +29,15 @@ jobs:
       run: |
         apktool b decompiled_apk -o rebuilt_apk.apk
 
+    - name: Optimize APK with zipalign
+      run: |
+        wget https://dl.google.com/android/repository/build-tools_r31.0.0-linux.zip
+        unzip -j build-tools_r31.0.0-linux.zip "*/zipalign" -d ./
+        chmod +x zipalign
+        ./zipalign -f 4 rebuilt_apk.apk aligned_apk.apk
+
     - name: Upload Rebuilt APK
       uses: actions/upload-artifact@v3
       with:
         name: Rebuilt-APK
-        path: rebuilt_apk.apk
+        path: aligned_apk.apk
