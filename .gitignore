@@ -1,0 +1,21 @@
+# APKTool output and build artifacts
+decompiled_apk/
+extracted_apks/
+rebuilt_apk.apk
+aligned_apk.apk
+*.apk
+
+# Keystore files
+*.keystore
+*.jks
+
+# APKTool
+apktool.jar
+apktool
+
+# Build tools
+zipalign
+build-tools_*.zip
+
+# Temporary files
+*.tmp
