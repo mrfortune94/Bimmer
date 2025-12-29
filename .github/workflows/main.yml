@@ -36,11 +36,10 @@ jobs:
     - name: Verify APKTool installation
       run: apktool --version
     
-    - name: Download and verify ZIP file
+    - name: Verify ZIP file from repository
       run: |
         set -e
-        echo "Downloading ZIP file..."
-        wget "https://www.apk.gold/download/BimmerLink.ver.2.36.6-6860.build.6860.apk_Decompiler.com.zip"
+        echo "Using ZIP file from repository..."
         
         echo "ZIP file size:"
         ls -lh "BimmerLink.ver.2.36.6-6860.build.6860.apk_Decompiler.com.zip"
