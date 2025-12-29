@@ -1,4 +1,4 @@
-name: Rebuild APK
+name: Rebuild and Sign APK
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - automate-rebuild-apk
 
 jobs:
-  build-apk:
+  build-and-sign-apk:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,19 +25,57 @@ jobs:
         mkdir -p decompiled_apk
         unzip BimmerLink.ver.2.36.6-6860.build.6860.apk_Decompiler.com.zip -d decompiled_apk
 
+    - name: Add LICENSE file
+      run: |
+        cat > decompiled_apk/assets/LICENSE.txt << 'EOF'
+        MIT License
+
+        Copyright (c) 2025 BimmerLink
+
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        EOF
+
     - name: Rebuild APK using APKTool
       run: |
         apktool b decompiled_apk -o rebuilt_apk.apk
+
+    - name: Generate new keystore
+      run: |
+        keytool -genkey -v -keystore bimmer.keystore -alias bimmer -keyalg RSA -keysize 2048 -validity 10000 \
+          -storepass bimmer2025 -keypass bimmer2025 \
+          -dname "CN=mrfortune94, OU=BimmerLink, O=BimmerLink, L=Unknown, S=Unknown, C=US"
+
+    - name: Sign APK using jarsigner
+      run: |
+        jarsigner -verbose -sigalg SHA256withRSA -digestalg SHA-256 \
+          -keystore bimmer.keystore -storepass bimmer2025 -keypass bimmer2025 \
+          rebuilt_apk.apk bimmer
 
     - name: Optimize APK with zipalign
       run: |
         wget https://dl.google.com/android/repository/build-tools_r31.0.0-linux.zip
         unzip -j build-tools_r31.0.0-linux.zip "*/zipalign" -d ./
         chmod +x zipalign
-        ./zipalign -f 4 rebuilt_apk.apk aligned_apk.apk
+        ./zipalign -f 4 rebuilt_apk.apk signed_aligned_apk.apk
 
-    - name: Upload Rebuilt APK
+    - name: Upload Signed APK
       uses: actions/upload-artifact@v3
       with:
-        name: Rebuilt-APK
-        path: aligned_apk.apk
+        name: Signed-APK
+        path: signed_aligned_apk.apk
