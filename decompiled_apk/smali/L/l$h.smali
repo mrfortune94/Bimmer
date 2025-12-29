@@ -1,0 +1,288 @@
+.class final LL/l$h;
+.super LW2/m;
+.source "SourceFile"
+
+# interfaces
+.implements LV2/a;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = LL/l;-><init>(LV2/a;LL/j;Ljava/util/List;LL/a;Lf3/H;)V
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x18
+    name = null
+.end annotation
+
+
+# instance fields
+.field final synthetic n:LL/l;
+
+
+# direct methods
+.method constructor <init>(LL/l;)V
+    .locals 0
+
+    .line 1
+    iput-object p1, p0, LL/l$h;->n:LL/l;
+
+    .line 2
+    .line 3
+    const/4 p1, 0x0
+
+    .line 4
+    invoke-direct {p0, p1}, LW2/m;-><init>(I)V
+
+    .line 5
+    .line 6
+    .line 7
+    return-void
+    .line 8
+    .line 9
+    .line 10
+    .line 11
+    .line 12
+    .line 13
+    .line 14
+    .line 15
+    .line 16
+    .line 17
+    .line 18
+    .line 19
+    .line 20
+    .line 21
+    .line 22
+    .line 23
+    .line 24
+    .line 25
+    .line 26
+    .line 27
+.end method
+
+
+# virtual methods
+.method public bridge synthetic a()Ljava/lang/Object;
+    .locals 1
+
+    .line 1
+    invoke-virtual {p0}, LL/l$h;->b()Ljava/io/File;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object v0
+
+    .line 5
+    return-object v0
+    .line 6
+    .line 7
+    .line 8
+    .line 9
+    .line 10
+    .line 11
+    .line 12
+    .line 13
+    .line 14
+    .line 15
+    .line 16
+    .line 17
+    .line 18
+    .line 19
+    .line 20
+    .line 21
+    .line 22
+    .line 23
+    .line 24
+.end method
+
+.method public final b()Ljava/io/File;
+    .locals 5
+
+    .line 1
+    iget-object v0, p0, LL/l$h;->n:LL/l;
+
+    .line 2
+    .line 3
+    invoke-static {v0}, LL/l;->h(LL/l;)LV2/a;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object v0
+
+    .line 7
+    invoke-interface {v0}, LV2/a;->a()Ljava/lang/Object;
+
+    .line 8
+    .line 9
+    .line 10
+    move-result-object v0
+
+    .line 11
+    check-cast v0, Ljava/io/File;
+
+    .line 12
+    .line 13
+    invoke-virtual {v0}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
+
+    .line 14
+    .line 15
+    .line 16
+    move-result-object v1
+
+    .line 17
+    sget-object v2, LL/l;->k:LL/l$a;
+
+    .line 18
+    .line 19
+    invoke-virtual {v2}, LL/l$a;->b()Ljava/lang/Object;
+
+    .line 20
+    .line 21
+    .line 22
+    move-result-object v3
+
+    .line 23
+    monitor-enter v3
+
+    .line 24
+    :try_start_0
+    invoke-virtual {v2}, LL/l$a;->a()Ljava/util/Set;
+
+    .line 25
+    .line 26
+    .line 27
+    move-result-object v4
+
+    .line 28
+    invoke-interface {v4, v1}, Ljava/util/Set;->contains(Ljava/lang/Object;)Z
+
+    .line 29
+    .line 30
+    .line 31
+    move-result v4
+
+    .line 32
+    if-nez v4, :cond_0
+
+    .line 33
+    .line 34
+    invoke-virtual {v2}, LL/l$a;->a()Ljava/util/Set;
+
+    .line 35
+    .line 36
+    .line 37
+    move-result-object v2
+
+    .line 38
+    const-string v4, "it"
+
+    .line 39
+    .line 40
+    invoke-static {v1, v4}, LW2/l;->d(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 41
+    .line 42
+    .line 43
+    invoke-interface {v2, v1}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 44
+    .line 45
+    .line 46
+    monitor-exit v3
+
+    .line 47
+    return-object v0
+
+    .line 48
+    :catchall_0
+    move-exception v0
+
+    .line 49
+    goto :goto_0
+
+    .line 50
+    :cond_0
+    :try_start_1
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    .line 51
+    .line 52
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    .line 53
+    .line 54
+    .line 55
+    const-string v2, "There are multiple DataStores active for the same file: "
+
+    .line 56
+    .line 57
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 58
+    .line 59
+    .line 60
+    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 61
+    .line 62
+    .line 63
+    const-string v0, ". You should either maintain your DataStore as a singleton or confirm that there is no two DataStore\'s active on the same file (by confirming that the scope is cancelled)."
+
+    .line 64
+    .line 65
+    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 66
+    .line 67
+    .line 68
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 69
+    .line 70
+    .line 71
+    move-result-object v0
+
+    .line 72
+    new-instance v1, Ljava/lang/IllegalStateException;
+
+    .line 73
+    .line 74
+    invoke-virtual {v0}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    .line 75
+    .line 76
+    .line 77
+    move-result-object v0
+
+    .line 78
+    invoke-direct {v1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    .line 79
+    .line 80
+    .line 81
+    throw v1
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    .line 82
+    :goto_0
+    monitor-exit v3
+
+    .line 83
+    throw v0
+    .line 84
+    .line 85
+    .line 86
+    .line 87
+    .line 88
+    .line 89
+    .line 90
+    .line 91
+    .line 92
+    .line 93
+.end method

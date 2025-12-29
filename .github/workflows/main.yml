@@ -16,18 +16,18 @@ jobs:
     - name: Set up APKTool
       run: |
         wget https://github.com/iBotPeaches/Apktool/releases/download/v2.7.0/apktool_2.7.0.jar -O apktool.jar
-        echo "java -jar apktool.jar \"$@\"" > apktool
+        echo 'java -jar $PWD/apktool.jar "$@"' > apktool
         chmod +x apktool
         sudo mv apktool /usr/local/bin/
 
-    - name: Extract decompiled APK zip
+    - name: Extract and decompile APK
       run: |
-        mkdir -p decompiled_apk
-        unzip BimmerLink.ver.2.36.6-6860.build.6860.apk_Decompiler.com.zip -d decompiled_apk
+        mkdir -p extracted_apks
+        unzip BimmerLink.ver.2.36.6-6860.build.6860.apk_Decompiler.com.zip -d extracted_apks
+        apktool d extracted_apks/resources/base.apk -o decompiled_apk
 
     - name: Add LICENSE file
       run: |
-        mkdir -p decompiled_apk/assets
         cat > decompiled_apk/assets/LICENSE.txt << 'EOF'
         MIT License
 
@@ -56,6 +56,16 @@ jobs:
       run: |
         apktool b decompiled_apk -o rebuilt_apk.apk
 
+    - name: Download and set up zipalign from Google
+      run: |
+        wget https://dl.google.com/android/repository/build-tools_r31.0.0-linux.zip
+        unzip -j build-tools_r31.0.0-linux.zip "*/zipalign" -d ./
+        chmod +x zipalign
+
+    - name: Optimize APK with zipalign (before signing)
+      run: |
+        ./zipalign -f 4 rebuilt_apk.apk aligned_apk.apk
+
     - name: Generate new keystore
       run: |
         keytool -genkey -v -keystore bimmer.keystore -alias bimmer -keyalg RSA -keysize 2048 -validity 10000 \
@@ -66,17 +76,10 @@ jobs:
       run: |
         jarsigner -verbose -sigalg SHA256withRSA -digestalg SHA-256 \
           -keystore bimmer.keystore -storepass bimmer2025 -keypass bimmer2025 \
-          rebuilt_apk.apk bimmer
-
-    - name: Optimize APK with zipalign
-      run: |
-        wget https://dl.google.com/android/repository/build-tools_r31.0.0-linux.zip
-        unzip -j build-tools_r31.0.0-linux.zip "*/zipalign" -d ./
-        chmod +x zipalign
-        ./zipalign -f 4 rebuilt_apk.apk signed_aligned_apk.apk
+          aligned_apk.apk bimmer
 
     - name: Upload Signed APK
       uses: actions/upload-artifact@v3
       with:
         name: Signed-APK
-        path: signed_aligned_apk.apk
+        path: aligned_apk.apk

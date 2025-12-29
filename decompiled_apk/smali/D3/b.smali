@@ -1,0 +1,464 @@
+.class public final LD3/b;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        LD3/b$a;
+    }
+.end annotation
+
+
+# static fields
+.field public static final d:LD3/b$a;
+
+.field public static final e:LI3/g;
+
+.field public static final f:LI3/g;
+
+.field public static final g:LI3/g;
+
+.field public static final h:LI3/g;
+
+.field public static final i:LI3/g;
+
+.field public static final j:LI3/g;
+
+
+# instance fields
+.field public final a:LI3/g;
+
+.field public final b:LI3/g;
+
+.field public final c:I
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 2
+
+    .line 1
+    .line 2
+    new-instance v0, LD3/b$a;
+
+    .line 3
+    const/4 v1, 0x0
+
+    .line 4
+    .line 5
+    .line 6
+    invoke-direct {v0, v1}, LD3/b$a;-><init>(LW2/g;)V
+
+    .line 7
+    .line 8
+    sput-object v0, LD3/b;->d:LD3/b$a;
+
+    .line 9
+    .line 10
+    sget-object v0, LI3/g;->p:LI3/g$a;
+
+    .line 11
+    .line 12
+    const-string v1, ":"
+
+    .line 13
+    .line 14
+    .line 15
+    invoke-virtual {v0, v1}, LI3/g$a;->c(Ljava/lang/String;)LI3/g;
+
+    .line 16
+    move-result-object v1
+
+    .line 17
+    .line 18
+    sput-object v1, LD3/b;->e:LI3/g;
+
+    .line 19
+    .line 20
+    const-string v1, ":status"
+
+    .line 21
+    .line 22
+    .line 23
+    invoke-virtual {v0, v1}, LI3/g$a;->c(Ljava/lang/String;)LI3/g;
+
+    .line 24
+    move-result-object v1
+
+    .line 25
+    .line 26
+    sput-object v1, LD3/b;->f:LI3/g;
+
+    .line 27
+    .line 28
+    const/4 v1, 0x0
+
+    sget-object v1, LS1/Vt/sPMCELmVklcd;->yCYPx:Ljava/lang/String;
+
+    .line 29
+    .line 30
+    .line 31
+    invoke-virtual {v0, v1}, LI3/g$a;->c(Ljava/lang/String;)LI3/g;
+
+    .line 32
+    move-result-object v1
+
+    .line 33
+    .line 34
+    sput-object v1, LD3/b;->g:LI3/g;
+
+    .line 35
+    .line 36
+    const-string v1, ":path"
+
+    .line 37
+    .line 38
+    .line 39
+    invoke-virtual {v0, v1}, LI3/g$a;->c(Ljava/lang/String;)LI3/g;
+
+    .line 40
+    move-result-object v1
+
+    .line 41
+    .line 42
+    sput-object v1, LD3/b;->h:LI3/g;
+
+    .line 43
+    .line 44
+    const-string v1, ":scheme"
+
+    .line 45
+    .line 46
+    .line 47
+    invoke-virtual {v0, v1}, LI3/g$a;->c(Ljava/lang/String;)LI3/g;
+
+    .line 48
+    move-result-object v1
+
+    .line 49
+    .line 50
+    sput-object v1, LD3/b;->i:LI3/g;
+
+    .line 51
+    .line 52
+    const-string v1, ":authority"
+
+    .line 53
+    .line 54
+    .line 55
+    invoke-virtual {v0, v1}, LI3/g$a;->c(Ljava/lang/String;)LI3/g;
+
+    .line 56
+    move-result-object v0
+
+    .line 57
+    .line 58
+    sput-object v0, LD3/b;->j:LI3/g;
+
+    .line 59
+    return-void
+.end method
+
+.method public constructor <init>(LI3/g;LI3/g;)V
+    .locals 1
+
+    const-string v0, "name"
+
+    invoke-static {p1, v0}, LW2/l;->e(Ljava/lang/Object;Ljava/lang/String;)V
+
+    const-string v0, "value"
+
+    invoke-static {p2, v0}, LW2/l;->e(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 2
+    iput-object p1, p0, LD3/b;->a:LI3/g;
+
+    .line 3
+    iput-object p2, p0, LD3/b;->b:LI3/g;
+
+    .line 4
+    invoke-virtual {p1}, LI3/g;->y()I
+
+    move-result p1
+
+    add-int/lit8 p1, p1, 0x20
+
+    invoke-virtual {p2}, LI3/g;->y()I
+
+    move-result p2
+
+    add-int/2addr p1, p2
+
+    iput p1, p0, LD3/b;->c:I
+
+    return-void
+.end method
+
+.method public constructor <init>(LI3/g;Ljava/lang/String;)V
+    .locals 1
+
+    const-string v0, "name"
+
+    invoke-static {p1, v0}, LW2/l;->e(Ljava/lang/Object;Ljava/lang/String;)V
+
+    const-string v0, "value"
+
+    invoke-static {p2, v0}, LW2/l;->e(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 6
+    sget-object v0, LI3/g;->p:LI3/g$a;
+
+    invoke-virtual {v0, p2}, LI3/g$a;->c(Ljava/lang/String;)LI3/g;
+
+    move-result-object p2
+
+    invoke-direct {p0, p1, p2}, LD3/b;-><init>(LI3/g;LI3/g;)V
+
+    return-void
+.end method
+
+.method public constructor <init>(Ljava/lang/String;Ljava/lang/String;)V
+    .locals 1
+
+    const-string v0, "name"
+
+    invoke-static {p1, v0}, LW2/l;->e(Ljava/lang/Object;Ljava/lang/String;)V
+
+    const-string v0, "value"
+
+    invoke-static {p2, v0}, LW2/l;->e(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 5
+    sget-object v0, LI3/g;->p:LI3/g$a;
+
+    invoke-virtual {v0, p1}, LI3/g$a;->c(Ljava/lang/String;)LI3/g;
+
+    move-result-object p1
+
+    invoke-virtual {v0, p2}, LI3/g$a;->c(Ljava/lang/String;)LI3/g;
+
+    move-result-object p2
+
+    invoke-direct {p0, p1, p2}, LD3/b;-><init>(LI3/g;LI3/g;)V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a()LI3/g;
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, LD3/b;->a:LI3/g;
+
+    .line 2
+    .line 3
+    return-object v0
+.end method
+
+.method public final b()LI3/g;
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, LD3/b;->b:LI3/g;
+
+    .line 2
+    .line 3
+    return-object v0
+.end method
+
+.method public equals(Ljava/lang/Object;)Z
+    .locals 4
+
+    .line 1
+    const/4 v0, 0x1
+
+    .line 2
+    if-ne p0, p1, :cond_0
+
+    .line 3
+    .line 4
+    return v0
+
+    .line 5
+    :cond_0
+    instance-of v1, p1, LD3/b;
+
+    .line 6
+    .line 7
+    const/4 v2, 0x0
+
+    .line 8
+    if-nez v1, :cond_1
+
+    .line 9
+    .line 10
+    return v2
+
+    .line 11
+    :cond_1
+    check-cast p1, LD3/b;
+
+    .line 12
+    .line 13
+    iget-object v1, p0, LD3/b;->a:LI3/g;
+
+    .line 14
+    .line 15
+    iget-object v3, p1, LD3/b;->a:LI3/g;
+
+    .line 16
+    .line 17
+    invoke-static {v1, v3}, LW2/l;->a(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 18
+    .line 19
+    .line 20
+    move-result v1
+
+    .line 21
+    if-nez v1, :cond_2
+
+    .line 22
+    .line 23
+    return v2
+
+    .line 24
+    :cond_2
+    iget-object v1, p0, LD3/b;->b:LI3/g;
+
+    .line 25
+    .line 26
+    iget-object p1, p1, LD3/b;->b:LI3/g;
+
+    .line 27
+    .line 28
+    invoke-static {v1, p1}, LW2/l;->a(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 29
+    .line 30
+    .line 31
+    move-result p1
+
+    .line 32
+    if-nez p1, :cond_3
+
+    .line 33
+    .line 34
+    return v2
+
+    .line 35
+    :cond_3
+    return v0
+.end method
+
+.method public hashCode()I
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, LD3/b;->a:LI3/g;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0}, LI3/g;->hashCode()I
+
+    .line 4
+    .line 5
+    .line 6
+    move-result v0
+
+    .line 7
+    mul-int/lit8 v0, v0, 0x1f
+
+    .line 8
+    .line 9
+    iget-object v1, p0, LD3/b;->b:LI3/g;
+
+    .line 10
+    .line 11
+    invoke-virtual {v1}, LI3/g;->hashCode()I
+
+    .line 12
+    .line 13
+    .line 14
+    move-result v1
+
+    .line 15
+    add-int/2addr v0, v1
+
+    .line 16
+    return v0
+.end method
+
+.method public toString()Ljava/lang/String;
+    .locals 2
+
+    .line 1
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    .line 2
+    .line 3
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    iget-object v1, p0, LD3/b;->a:LI3/g;
+
+    .line 7
+    .line 8
+    invoke-virtual {v1}, LI3/g;->B()Ljava/lang/String;
+
+    .line 9
+    .line 10
+    .line 11
+    move-result-object v1
+
+    .line 12
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 13
+    .line 14
+    .line 15
+    const-string v1, ": "
+
+    .line 16
+    .line 17
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 18
+    .line 19
+    .line 20
+    iget-object v1, p0, LD3/b;->b:LI3/g;
+
+    .line 21
+    .line 22
+    invoke-virtual {v1}, LI3/g;->B()Ljava/lang/String;
+
+    .line 23
+    .line 24
+    .line 25
+    move-result-object v1
+
+    .line 26
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 27
+    .line 28
+    .line 29
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 30
+    .line 31
+    .line 32
+    move-result-object v0
+
+    .line 33
+    return-object v0
+.end method
