@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" android:typeface="monospace" android:textColor="@color/colorSecondaryText" android:id="@id/list_item_selection_address_text_view" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="15.0dip" android:paddingStart="?android:listPreferredItemPaddingStart" android:paddingEnd="5.0dip" />
-    <TextView android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" android:textColor="@android:color/white" android:ellipsize="end" android:id="@id/list_item_selection_title_text_view" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="15.0dip" android:lines="1" android:layout_weight="1.0" android:paddingEnd="?android:listPreferredItemPaddingEnd" />
-    <CheckBox android:layout_gravity="center_vertical" android:id="@id/list_item_selection_check_box" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingEnd="?android:listPreferredItemPaddingEnd" />
-</LinearLayout>

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:id="@id/error_details_progress_bar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-    <TextView android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" android:textColor="@color/colorSecondaryText" android:gravity="center" android:id="@id/error_details_not_available_text_view" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/not_available" android:layout_centerInParent="true" android:textAlignment="center" />
-    <ListView android:id="@id/error_details_list_view" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:cacheColorHint="@android:color/transparent" />
-</RelativeLayout>

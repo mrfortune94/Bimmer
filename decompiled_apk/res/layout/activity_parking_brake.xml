@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/parking_brake_layout" android:padding="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:keepScreenOn="true"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/service_mode_title" />
-    <TextView android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" android:textColor="@color/colorSecondaryText" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/service_mode_description" />
-    <Button android:id="@id/enable_service_mode_button" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/enable_service_mode" />
-    <Button android:id="@id/disable_service_mode_button" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/disable_service_mode" style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
-</LinearLayout>

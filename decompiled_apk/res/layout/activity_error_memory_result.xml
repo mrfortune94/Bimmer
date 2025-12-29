@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:keepScreenOn="true"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" android:textColor="@color/colorSecondaryText" android:gravity="center" android:id="@id/error_memory_result_no_errors_text_view" android:paddingTop="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/no_errors" android:layout_centerInParent="true" android:textAlignment="center" />
-    <ListView android:id="@id/error_memory_result_list_view" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.google.android.material.floatingactionbutton.FloatingActionButton android:id="@id/clear_error_memory_button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:layout_alignParentBottom="true" android:layout_marginEnd="20.0dip" android:layout_alignParentEnd="true" app:backgroundTint="?colorPrimary" app:srcCompat="@drawable/ic_delete" />
-</RelativeLayout>
