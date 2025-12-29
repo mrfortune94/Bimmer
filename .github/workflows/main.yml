@@ -23,7 +23,7 @@ jobs:
     - name: Extract decompiled APK zip
       run: |
         mkdir -p decompiled_apk
-        unzip decompiled_apk.zip -d decompiled_apk
+        unzip BimmerLink.ver.2.36.6-6860.build.6860.apk_Decompiler.com.zip -d decompiled_apk
 
     - name: Rebuild APK using APKTool
       run: |
