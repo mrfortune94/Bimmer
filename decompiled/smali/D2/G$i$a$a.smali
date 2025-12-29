@@ -1,0 +1,101 @@
+.class LD2/G$i$a$a;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Ljava/lang/Runnable;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = LD2/G$i$a;->b(Lw2/d;)V
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x0
+    name = null
+.end annotation
+
+
+# instance fields
+.field final synthetic m:LD2/G$i$a;
+
+
+# direct methods
+.method constructor <init>(LD2/G$i$a;)V
+    .locals 0
+
+    .line 1
+    iput-object p1, p0, LD2/G$i$a$a;->m:LD2/G$i$a;
+
+    .line 2
+    .line 3
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    return-void
+.end method
+
+
+# virtual methods
+.method public run()V
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, LD2/G$i$a$a;->m:LD2/G$i$a;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, LD2/G$i$a;->a:LD2/G$i;
+
+    .line 4
+    .line 5
+    iget-object v0, v0, LD2/G$i;->c:LD2/G;
+
+    .line 6
+    .line 7
+    invoke-virtual {v0}, LD2/G;->G()Ljava/lang/Boolean;
+
+    .line 8
+    .line 9
+    .line 10
+    move-result-object v0
+
+    .line 11
+    invoke-virtual {v0}, Ljava/lang/Boolean;->booleanValue()Z
+
+    .line 12
+    .line 13
+    .line 14
+    move-result v0
+
+    .line 15
+    if-eqz v0, :cond_0
+
+    .line 16
+    .line 17
+    return-void
+
+    .line 18
+    :cond_0
+    iget-object v0, p0, LD2/G$i$a$a;->m:LD2/G$i$a;
+
+    .line 19
+    .line 20
+    iget-object v0, v0, LD2/G$i$a;->a:LD2/G$i;
+
+    .line 21
+    .line 22
+    iget-object v0, v0, LD2/G$i;->b:LD2/G$J;
+
+    .line 23
+    .line 24
+    invoke-interface {v0}, LD2/G$J;->b()V
+
+    .line 25
+    .line 26
+    .line 27
+    return-void
+.end method

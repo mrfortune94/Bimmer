@@ -1,0 +1,456 @@
+.class public final LA3/b;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# instance fields
+.field private final a:Ljava/util/List;
+
+.field private b:I
+
+.field private c:Z
+
+.field private d:Z
+
+
+# direct methods
+.method public constructor <init>(Ljava/util/List;)V
+    .locals 1
+
+    .line 1
+    const-string v0, "connectionSpecs"
+
+    .line 2
+    .line 3
+    invoke-static {p1, v0}, LW2/l;->e(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 4
+    .line 5
+    .line 6
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 7
+    .line 8
+    .line 9
+    iput-object p1, p0, LA3/b;->a:Ljava/util/List;
+
+    .line 10
+    .line 11
+    return-void
+.end method
+
+.method private final c(Ljavax/net/ssl/SSLSocket;)Z
+    .locals 3
+
+    .line 1
+    iget v0, p0, LA3/b;->b:I
+
+    .line 2
+    .line 3
+    iget-object v1, p0, LA3/b;->a:Ljava/util/List;
+
+    .line 4
+    .line 5
+    invoke-interface {v1}, Ljava/util/List;->size()I
+
+    .line 6
+    .line 7
+    .line 8
+    move-result v1
+
+    .line 9
+    :goto_0
+    if-ge v0, v1, :cond_1
+
+    .line 10
+    .line 11
+    iget-object v2, p0, LA3/b;->a:Ljava/util/List;
+
+    .line 12
+    .line 13
+    invoke-interface {v2, v0}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    .line 14
+    .line 15
+    .line 16
+    move-result-object v2
+
+    .line 17
+    check-cast v2, Lv3/l;
+
+    .line 18
+    .line 19
+    invoke-virtual {v2, p1}, Lv3/l;->e(Ljavax/net/ssl/SSLSocket;)Z
+
+    .line 20
+    .line 21
+    .line 22
+    move-result v2
+
+    .line 23
+    if-eqz v2, :cond_0
+
+    .line 24
+    .line 25
+    const/4 p1, 0x1
+
+    .line 26
+    return p1
+
+    .line 27
+    :cond_0
+    add-int/lit8 v0, v0, 0x1
+
+    .line 28
+    .line 29
+    goto :goto_0
+
+    .line 30
+    :cond_1
+    const/4 p1, 0x0
+
+    .line 31
+    return p1
+.end method
+
+
+# virtual methods
+.method public final a(Ljavax/net/ssl/SSLSocket;)Lv3/l;
+    .locals 4
+
+    .line 1
+    .line 2
+    const-string v0, "sslSocket"
+
+    .line 3
+    .line 4
+    .line 5
+    invoke-static {p1, v0}, LW2/l;->e(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 6
+    .line 7
+    iget v0, p0, LA3/b;->b:I
+
+    .line 8
+    .line 9
+    iget-object v1, p0, LA3/b;->a:Ljava/util/List;
+
+    .line 10
+    .line 11
+    .line 12
+    invoke-interface {v1}, Ljava/util/List;->size()I
+
+    .line 13
+    move-result v1
+
+    .line 14
+    .line 15
+    :goto_0
+    if-ge v0, v1, :cond_1
+
+    .line 16
+    .line 17
+    iget-object v2, p0, LA3/b;->a:Ljava/util/List;
+
+    .line 18
+    .line 19
+    .line 20
+    invoke-interface {v2, v0}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    .line 21
+    move-result-object v2
+
+    .line 22
+    .line 23
+    check-cast v2, Lv3/l;
+
+    .line 24
+    .line 25
+    .line 26
+    invoke-virtual {v2, p1}, Lv3/l;->e(Ljavax/net/ssl/SSLSocket;)Z
+
+    .line 27
+    move-result v3
+
+    .line 28
+    .line 29
+    if-eqz v3, :cond_0
+
+    .line 30
+    .line 31
+    add-int/lit8 v0, v0, 0x1
+
+    .line 32
+    .line 33
+    iput v0, p0, LA3/b;->b:I
+
+    .line 34
+    goto :goto_1
+
+    .line 35
+    .line 36
+    :cond_0
+    add-int/lit8 v0, v0, 0x1
+
+    .line 37
+    goto :goto_0
+
+    .line 38
+    :cond_1
+    const/4 v2, 0x0
+
+    .line 39
+    .line 40
+    :goto_1
+    if-eqz v2, :cond_2
+
+    .line 41
+    .line 42
+    .line 43
+    invoke-direct {p0, p1}, LA3/b;->c(Ljavax/net/ssl/SSLSocket;)Z
+
+    .line 44
+    move-result v0
+
+    .line 45
+    .line 46
+    iput-boolean v0, p0, LA3/b;->c:Z
+
+    .line 47
+    .line 48
+    iget-boolean v0, p0, LA3/b;->d:Z
+
+    .line 49
+    .line 50
+    .line 51
+    invoke-virtual {v2, p1, v0}, Lv3/l;->c(Ljavax/net/ssl/SSLSocket;Z)V
+
+    .line 52
+    return-object v2
+
+    .line 53
+    .line 54
+    :cond_2
+    new-instance v0, Ljava/net/UnknownServiceException;
+
+    .line 55
+    .line 56
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    .line 57
+    .line 58
+    .line 59
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    .line 60
+    .line 61
+    const-string v2, "Unable to find acceptable protocols. isFallback="
+
+    .line 62
+    .line 63
+    .line 64
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 65
+    .line 66
+    iget-boolean v2, p0, LA3/b;->d:Z
+
+    .line 67
+    .line 68
+    .line 69
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    .line 70
+    .line 71
+    const-string v2, ", modes="
+
+    .line 72
+    .line 73
+    .line 74
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 75
+    .line 76
+    iget-object v2, p0, LA3/b;->a:Ljava/util/List;
+
+    .line 77
+    .line 78
+    .line 79
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 80
+    .line 81
+    const/4 v2, 0x0
+
+    sget-object v2, Lg/tgZ/brhVj;->NXSzBOPovDggp:Ljava/lang/String;
+
+    .line 82
+    .line 83
+    .line 84
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 85
+    .line 86
+    .line 87
+    invoke-virtual {p1}, Ljavax/net/ssl/SSLSocket;->getEnabledProtocols()[Ljava/lang/String;
+
+    .line 88
+    move-result-object p1
+
+    .line 89
+    .line 90
+    .line 91
+    invoke-static {p1}, LW2/l;->b(Ljava/lang/Object;)V
+
+    .line 92
+    .line 93
+    .line 94
+    invoke-static {p1}, Ljava/util/Arrays;->toString([Ljava/lang/Object;)Ljava/lang/String;
+
+    .line 95
+    move-result-object p1
+
+    .line 96
+    .line 97
+    const-string v2, "toString(this)"
+
+    .line 98
+    .line 99
+    .line 100
+    invoke-static {p1, v2}, LW2/l;->d(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 101
+    .line 102
+    .line 103
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 104
+    .line 105
+    .line 106
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 107
+    move-result-object p1
+
+    .line 108
+    .line 109
+    .line 110
+    invoke-direct {v0, p1}, Ljava/net/UnknownServiceException;-><init>(Ljava/lang/String;)V
+
+    .line 111
+    throw v0
+.end method
+
+.method public final b(Ljava/io/IOException;)Z
+    .locals 3
+
+    .line 1
+    const-string v0, "e"
+
+    .line 2
+    .line 3
+    invoke-static {p1, v0}, LW2/l;->e(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 4
+    .line 5
+    .line 6
+    const/4 v0, 0x1
+
+    .line 7
+    iput-boolean v0, p0, LA3/b;->d:Z
+
+    .line 8
+    .line 9
+    iget-boolean v1, p0, LA3/b;->c:Z
+
+    .line 10
+    .line 11
+    const/4 v2, 0x0
+
+    .line 12
+    if-nez v1, :cond_0
+
+    .line 13
+    .line 14
+    return v2
+
+    .line 15
+    :cond_0
+    instance-of v1, p1, Ljava/net/ProtocolException;
+
+    .line 16
+    .line 17
+    if-eqz v1, :cond_1
+
+    .line 18
+    .line 19
+    return v2
+
+    .line 20
+    :cond_1
+    instance-of v1, p1, Ljava/io/InterruptedIOException;
+
+    .line 21
+    .line 22
+    if-eqz v1, :cond_2
+
+    .line 23
+    .line 24
+    return v2
+
+    .line 25
+    :cond_2
+    instance-of v1, p1, Ljavax/net/ssl/SSLHandshakeException;
+
+    .line 26
+    .line 27
+    if-eqz v1, :cond_3
+
+    .line 28
+    .line 29
+    invoke-virtual {p1}, Ljava/lang/Throwable;->getCause()Ljava/lang/Throwable;
+
+    .line 30
+    .line 31
+    .line 32
+    move-result-object v1
+
+    .line 33
+    instance-of v1, v1, Ljava/security/cert/CertificateException;
+
+    .line 34
+    .line 35
+    if-eqz v1, :cond_3
+
+    .line 36
+    .line 37
+    return v2
+
+    .line 38
+    :cond_3
+    instance-of v1, p1, Ljavax/net/ssl/SSLPeerUnverifiedException;
+
+    .line 39
+    .line 40
+    if-eqz v1, :cond_4
+
+    .line 41
+    .line 42
+    return v2
+
+    .line 43
+    :cond_4
+    instance-of p1, p1, Ljavax/net/ssl/SSLException;
+
+    .line 44
+    .line 45
+    if-eqz p1, :cond_5
+
+    .line 46
+    .line 47
+    return v0
+
+    .line 48
+    :cond_5
+    return v2
+.end method

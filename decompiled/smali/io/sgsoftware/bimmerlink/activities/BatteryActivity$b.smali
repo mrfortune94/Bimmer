@@ -1,0 +1,242 @@
+.class Lio/sgsoftware/bimmerlink/activities/BatteryActivity$b;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements LD2/G$H;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lio/sgsoftware/bimmerlink/activities/BatteryActivity;->i0()V
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x0
+    name = null
+.end annotation
+
+
+# instance fields
+.field final synthetic a:Lio/sgsoftware/bimmerlink/activities/BatteryActivity;
+
+
+# direct methods
+.method constructor <init>(Lio/sgsoftware/bimmerlink/activities/BatteryActivity;)V
+    .locals 0
+
+    .line 1
+    iput-object p1, p0, Lio/sgsoftware/bimmerlink/activities/BatteryActivity$b;->a:Lio/sgsoftware/bimmerlink/activities/BatteryActivity;
+
+    .line 2
+    .line 3
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    return-void
+.end method
+
+
+# virtual methods
+.method public a(Ljava/lang/Exception;)V
+    .locals 1
+
+    .line 1
+    iget-object p1, p0, Lio/sgsoftware/bimmerlink/activities/BatteryActivity$b;->a:Lio/sgsoftware/bimmerlink/activities/BatteryActivity;
+
+    .line 2
+    .line 3
+    invoke-static {p1}, Lio/sgsoftware/bimmerlink/activities/BatteryActivity;->S(Lio/sgsoftware/bimmerlink/activities/BatteryActivity;)Landroid/widget/TextView;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object p1
+
+    .line 7
+    const/4 v0, 0x0
+
+    .line 8
+    invoke-virtual {p1, v0}, Landroid/view/View;->setVisibility(I)V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-object p1, p0, Lio/sgsoftware/bimmerlink/activities/BatteryActivity$b;->a:Lio/sgsoftware/bimmerlink/activities/BatteryActivity;
+
+    .line 12
+    .line 13
+    invoke-static {p1}, Lio/sgsoftware/bimmerlink/activities/BatteryActivity;->U(Lio/sgsoftware/bimmerlink/activities/BatteryActivity;)Landroid/widget/GridView;
+
+    .line 14
+    .line 15
+    .line 16
+    move-result-object p1
+
+    .line 17
+    const/4 v0, 0x4
+
+    .line 18
+    invoke-virtual {p1, v0}, Landroid/view/View;->setVisibility(I)V
+
+    .line 19
+    .line 20
+    .line 21
+    iget-object p1, p0, Lio/sgsoftware/bimmerlink/activities/BatteryActivity$b;->a:Lio/sgsoftware/bimmerlink/activities/BatteryActivity;
+
+    .line 22
+    .line 23
+    invoke-static {p1}, Lio/sgsoftware/bimmerlink/activities/BatteryActivity;->V(Lio/sgsoftware/bimmerlink/activities/BatteryActivity;)Landroid/widget/ProgressBar;
+
+    .line 24
+    .line 25
+    .line 26
+    move-result-object p1
+
+    .line 27
+    invoke-virtual {p1, v0}, Landroid/view/View;->setVisibility(I)V
+
+    .line 28
+    .line 29
+    .line 30
+    iget-object p1, p0, Lio/sgsoftware/bimmerlink/activities/BatteryActivity$b;->a:Lio/sgsoftware/bimmerlink/activities/BatteryActivity;
+
+    .line 31
+    .line 32
+    invoke-static {p1}, Lio/sgsoftware/bimmerlink/activities/BatteryActivity;->W(Lio/sgsoftware/bimmerlink/activities/BatteryActivity;)Landroid/widget/Button;
+
+    .line 33
+    .line 34
+    .line 35
+    move-result-object p1
+
+    .line 36
+    invoke-virtual {p1, v0}, Landroid/view/View;->setVisibility(I)V
+
+    .line 37
+    .line 38
+    .line 39
+    iget-object p1, p0, Lio/sgsoftware/bimmerlink/activities/BatteryActivity$b;->a:Lio/sgsoftware/bimmerlink/activities/BatteryActivity;
+
+    .line 40
+    .line 41
+    invoke-static {p1}, Lio/sgsoftware/bimmerlink/activities/BatteryActivity;->X(Lio/sgsoftware/bimmerlink/activities/BatteryActivity;)V
+
+    .line 42
+    .line 43
+    .line 44
+    return-void
+.end method
+
+.method public b(LD2/a;)V
+    .locals 3
+
+    .line 1
+    iget-object v0, p0, Lio/sgsoftware/bimmerlink/activities/BatteryActivity$b;->a:Lio/sgsoftware/bimmerlink/activities/BatteryActivity;
+
+    .line 2
+    .line 3
+    invoke-static {v0}, Lio/sgsoftware/bimmerlink/activities/BatteryActivity;->S(Lio/sgsoftware/bimmerlink/activities/BatteryActivity;)Landroid/widget/TextView;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object v0
+
+    .line 7
+    const/4 v1, 0x4
+
+    .line 8
+    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-object v0, p0, Lio/sgsoftware/bimmerlink/activities/BatteryActivity$b;->a:Lio/sgsoftware/bimmerlink/activities/BatteryActivity;
+
+    .line 12
+    .line 13
+    invoke-static {v0}, Lio/sgsoftware/bimmerlink/activities/BatteryActivity;->U(Lio/sgsoftware/bimmerlink/activities/BatteryActivity;)Landroid/widget/GridView;
+
+    .line 14
+    .line 15
+    .line 16
+    move-result-object v0
+
+    .line 17
+    const/4 v2, 0x0
+
+    .line 18
+    invoke-virtual {v0, v2}, Landroid/view/View;->setVisibility(I)V
+
+    .line 19
+    .line 20
+    .line 21
+    iget-object v0, p0, Lio/sgsoftware/bimmerlink/activities/BatteryActivity$b;->a:Lio/sgsoftware/bimmerlink/activities/BatteryActivity;
+
+    .line 22
+    .line 23
+    invoke-static {v0}, Lio/sgsoftware/bimmerlink/activities/BatteryActivity;->V(Lio/sgsoftware/bimmerlink/activities/BatteryActivity;)Landroid/widget/ProgressBar;
+
+    .line 24
+    .line 25
+    .line 26
+    move-result-object v0
+
+    .line 27
+    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
+
+    .line 28
+    .line 29
+    .line 30
+    iget-object v0, p0, Lio/sgsoftware/bimmerlink/activities/BatteryActivity$b;->a:Lio/sgsoftware/bimmerlink/activities/BatteryActivity;
+
+    .line 31
+    .line 32
+    invoke-static {v0}, Lio/sgsoftware/bimmerlink/activities/BatteryActivity;->W(Lio/sgsoftware/bimmerlink/activities/BatteryActivity;)Landroid/widget/Button;
+
+    .line 33
+    .line 34
+    .line 35
+    move-result-object v0
+
+    .line 36
+    invoke-virtual {v0, v2}, Landroid/view/View;->setVisibility(I)V
+
+    .line 37
+    .line 38
+    .line 39
+    new-instance v0, Ln2/a;
+
+    .line 40
+    .line 41
+    iget-object v1, p0, Lio/sgsoftware/bimmerlink/activities/BatteryActivity$b;->a:Lio/sgsoftware/bimmerlink/activities/BatteryActivity;
+
+    .line 42
+    .line 43
+    invoke-direct {v0, v1, p1}, Ln2/a;-><init>(Landroid/content/Context;LD2/a;)V
+
+    .line 44
+    .line 45
+    .line 46
+    iget-object p1, p0, Lio/sgsoftware/bimmerlink/activities/BatteryActivity$b;->a:Lio/sgsoftware/bimmerlink/activities/BatteryActivity;
+
+    .line 47
+    .line 48
+    invoke-static {p1}, Lio/sgsoftware/bimmerlink/activities/BatteryActivity;->U(Lio/sgsoftware/bimmerlink/activities/BatteryActivity;)Landroid/widget/GridView;
+
+    .line 49
+    .line 50
+    .line 51
+    move-result-object p1
+
+    .line 52
+    invoke-virtual {p1, v0}, Landroid/widget/GridView;->setAdapter(Landroid/widget/ListAdapter;)V
+
+    .line 53
+    .line 54
+    .line 55
+    return-void
+.end method

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="36" android:compileSdkVersionCodename="16" android:requiredSplitTypes="base__abi,base__density" android:splitTypes="" package="io.sgsoftware.bimmerlink" platformBuildVersionCode="36" platformBuildVersionName="16">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="com.android.vending.BILLING"/>
+    <uses-permission android:name="com.android.vending.CHECK_LICENSE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN"/>
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.SEND"/>
+            <data android:mimeType="*/*"/>
+        </intent>
+        <intent>
+            <action android:name="com.android.vending.billing.InAppBillingService.BIND"/>
+        </intent>
+        <intent>
+            <action android:name="com.google.android.apps.play.billingtestcompanion.BillingOverrideService.BIND"/>
+        </intent>
+        <provider android:authorities="androidx.car.app.connection" android:name="androidx.car.app.connection.provider"/>
+    </queries>
+    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE"/>
+    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_ATTRIBUTION"/>
+    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_AD_ID"/>
+    <permission android:name="io.sgsoftware.bimmerlink.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" android:protectionLevel="signature"/>
+    <uses-permission android:name="io.sgsoftware.bimmerlink.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"/>
+    <application android:allowBackup="true" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:extractNativeLibs="false" android:hardwareAccelerated="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:largeHeap="true" android:name="com.pairip.application.Application" android:requestLegacyExternalStorage="true" android:roundIcon="@mipmap/ic_launcher_round" android:supportsRtl="true" android:theme="@style/AppTheme">
+        <activity android:configChanges="orientation|screenSize" android:exported="true" android:launchMode="singleTask" android:name="io.sgsoftware.bimmerlink.activities.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"/>
+            </intent-filter>
+            <meta-data android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" android:resource="@xml/device_filter"/>
+        </activity>
+        <activity android:configChanges="orientation|screenSize" android:name="io.sgsoftware.bimmerlink.activities.ConnectActivity" android:noHistory="true" android:parentActivityName="io.sgsoftware.bimmerlink.activities.MainActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:configChanges="orientation|screenSize" android:name="io.sgsoftware.bimmerlink.activities.MenuActivity" android:parentActivityName="io.sgsoftware.bimmerlink.activities.MainActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:name="io.sgsoftware.bimmerlink.activities.PurchaseActivity" android:noHistory="true" android:parentActivityName="io.sgsoftware.bimmerlink.activities.MainActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="orientation|screenSize" android:name="io.sgsoftware.bimmerlink.activities.PurchaseAddOnActivity" android:noHistory="true" android:parentActivityName="io.sgsoftware.bimmerlink.activities.MainActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:name="io.sgsoftware.bimmerlink.activities.SettingsActivity" android:parentActivityName="io.sgsoftware.bimmerlink.activities.MainActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:name="io.sgsoftware.bimmerlink.activities.ErrorMemoryEcuSelectionActivity" android:parentActivityName="io.sgsoftware.bimmerlink.activities.MenuActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:name="io.sgsoftware.bimmerlink.activities.ErrorMemoryActivity" android:parentActivityName="io.sgsoftware.bimmerlink.activities.ErrorMemoryEcuSelectionActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:name="io.sgsoftware.bimmerlink.activities.ErrorReportActivity" android:parentActivityName="io.sgsoftware.bimmerlink.activities.ErrorMemoryActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:name="io.sgsoftware.bimmerlink.activities.ErrorMemoryResultActivity" android:parentActivityName="io.sgsoftware.bimmerlink.activities.ErrorMemoryActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:name="io.sgsoftware.bimmerlink.activities.ErrorDetailsActivity" android:parentActivityName="io.sgsoftware.bimmerlink.activities.ErrorMemoryResultActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:name="io.sgsoftware.bimmerlink.activities.SensorValuesActivity" android:parentActivityName="io.sgsoftware.bimmerlink.activities.MenuActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:name="io.sgsoftware.bimmerlink.activities.DashboardActivity" android:parentActivityName="io.sgsoftware.bimmerlink.activities.MenuActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:name="io.sgsoftware.bimmerlink.activities.SensorValuesConfigurationActivity" android:parentActivityName="io.sgsoftware.bimmerlink.activities.SensorValuesActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:name="io.sgsoftware.bimmerlink.activities.SensorValuesSelectionActivity" android:parentActivityName="io.sgsoftware.bimmerlink.activities.SensorValuesActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:name="io.sgsoftware.bimmerlink.activities.DPFActivity" android:parentActivityName="io.sgsoftware.bimmerlink.activities.MenuActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:name="io.sgsoftware.bimmerlink.activities.ShortCircuitLockActivity" android:parentActivityName="io.sgsoftware.bimmerlink.activities.MenuActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:name="io.sgsoftware.bimmerlink.activities.TransmissionAdaptationValuesActivity" android:parentActivityName="io.sgsoftware.bimmerlink.activities.MenuActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:name="io.sgsoftware.bimmerlink.activities.DPFInformationActivity" android:parentActivityName="io.sgsoftware.bimmerlink.activities.DPFActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:name="io.sgsoftware.bimmerlink.activities.ExhaustFlapActivity" android:parentActivityName="io.sgsoftware.bimmerlink.activities.MenuActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:name="io.sgsoftware.bimmerlink.activities.AsdActivity" android:parentActivityName="io.sgsoftware.bimmerlink.activities.MenuActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:name="io.sgsoftware.bimmerlink.activities.SoundTuningActivity" android:parentActivityName="io.sgsoftware.bimmerlink.activities.MenuActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:name="io.sgsoftware.bimmerlink.activities.BatteryActivity" android:parentActivityName="io.sgsoftware.bimmerlink.activities.MenuActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:name="io.sgsoftware.bimmerlink.activities.ParkingBrakeActivity" android:parentActivityName="io.sgsoftware.bimmerlink.activities.MenuActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:name="io.sgsoftware.bimmerlink.activities.ServiceActivity" android:parentActivityName="io.sgsoftware.bimmerlink.activities.MenuActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:name="io.sgsoftware.bimmerlink.activities.SupportRequestActivity" android:parentActivityName="io.sgsoftware.bimmerlink.activities.MainActivity"/>
+        <provider android:authorities="io.sgsoftware.bimmerlink.fileprovider" android:exported="false" android:grantUriPermissions="true" android:name="androidx.core.content.FileProvider" android:protectionLevel="signature">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/filepaths"/>
+        </provider>
+        <meta-data android:name="io.fabric.ApiKey" android:value="142a5cb408b7c75c00ad401445f08acb6d2152f5"/>
+        <service android:exported="true" android:name="io.sgsoftware.bimmerlink.androidAuto.CarService">
+            <intent-filter>
+                <action android:name="androidx.car.app.CarAppService"/>
+                <category android:name="androidx.car.app.category.IOT"/>
+            </intent-filter>
+        </service>
+        <meta-data android:name="com.google.android.gms.car.application" android:resource="@xml/automotive_app_desc"/>
+        <meta-data android:name="androidx.car.app.minCarApiLevel" android:value="7"/>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.components.ComponentDiscoveryService">
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.crashlytics.FirebaseCrashlyticsKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.crashlytics.CrashlyticsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.sessions.FirebaseSessionsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+        </service>
+        <meta-data android:name="com.google.android.play.billingclient.version" android:value="8.0.0"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:exported="false" android:name="com.android.billingclient.api.ProxyBillingActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:exported="false" android:name="com.android.billingclient.api.ProxyBillingActivityV2" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <service android:enabled="false" android:exported="false" android:name="androidx.car.app.CarAppMetadataHolderService" android:process="">
+            <meta-data android:name="androidx.car.app.CarAppMetadataHolderService.CAR_HARDWARE_MANAGER" android:value="androidx.car.app.hardware.ProjectedCarHardwareManager"/>
+        </service>
+        <activity android:exported="false" android:name="androidx.car.app.CarAppPermissionActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <receiver android:exported="false" android:name="androidx.car.app.notification.CarAppNotificationBroadcastReceiver"/>
+        <receiver android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementReceiver"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementService"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <activity android:exported="false" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <property android:name="android.adservices.AD_SERVICES_CONFIG" android:resource="@xml/ga_ad_services_config"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.firebase.sessions.SessionLifecycleService"/>
+        <provider android:authorities="io.sgsoftware.bimmerlink.firebaseinitprovider" android:directBootAware="true" android:exported="false" android:initOrder="100" android:name="com.google.firebase.provider.FirebaseInitProvider"/>
+        <provider android:authorities="io.sgsoftware.bimmerlink.androidx-startup" android:exported="false" android:name="androidx.startup.InitializationProvider">
+            <meta-data android:name="androidx.emoji2.text.EmojiCompatInitializer" android:value="androidx.startup"/>
+            <meta-data android:name="androidx.lifecycle.ProcessLifecycleInitializer" android:value="androidx.startup"/>
+            <meta-data android:name="androidx.profileinstaller.ProfileInstallerInitializer" android:value="androidx.startup"/>
+        </provider>
+        <uses-library android:name="androidx.window.extensions" android:required="false"/>
+        <uses-library android:name="androidx.window.sidecar" android:required="false"/>
+        <uses-library android:name="android.ext.adservices" android:required="false"/>
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery">
+            <meta-data android:name="backend:com.google.android.datatransport.cct.CctBackendFactory" android:value="cct"/>
+        </service>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"/>
+        <receiver android:directBootAware="false" android:enabled="true" android:exported="true" android:name="androidx.profileinstaller.ProfileInstallReceiver" android:permission="android.permission.DUMP">
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.SKIP_FILE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION"/>
+            </intent-filter>
+        </receiver>
+        <activity android:exported="false" android:name="com.pairip.licensecheck.LicenseActivity"/>
+        <provider android:authorities="io.sgsoftware.bimmerlink.com.pairip.licensecheck.LicenseContentProvider" android:exported="false" android:name="com.pairip.licensecheck.LicenseContentProvider"/>
+        <meta-data android:name="com.android.vending.splits.required" android:value="true"/>
+        <meta-data android:name="com.android.stamp.source" android:value="https://play.google.com/store"/>
+        <meta-data android:name="com.android.stamp.type" android:value="STAMP_TYPE_DISTRIBUTION_APK"/>
+        <meta-data android:name="com.android.vending.splits" android:resource="@xml/splits0"/>
+        <meta-data android:name="com.android.vending.derived.apk.id" android:value="3"/>
+    </application>
+</manifest>

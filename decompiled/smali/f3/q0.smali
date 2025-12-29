@@ -1,0 +1,17 @@
+.class public abstract Lf3/q0;
+.super Lf3/u0;
+.source "SourceFile"
+
+
+# direct methods
+.method public constructor <init>()V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0}, Lf3/u0;-><init>()V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method

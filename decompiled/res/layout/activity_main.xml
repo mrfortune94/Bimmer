@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:keepScreenOn="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="bottom|center" android:orientation="vertical" android:id="@id/main_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="1.0">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@null" android:contentDescription="@null" />
+            <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:contentDescription="@null" app:srcCompat="@null" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/connect_layout" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:id="@id/connect_button" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:text="@string/connect" style="@style/Widget.MaterialComponents.Button" />
+            <Button android:textColor="@color/colorSecondaryText" android:layout_gravity="center_horizontal" android:id="@id/offline_mode_button" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/offline_mode" style="@style/Widget.MaterialComponents.Button.TextButton" />
+            <Button android:layout_gravity="center_horizontal" android:id="@id/purchase_button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/unlock_coding" app:icon="@drawable/ic_cart" style="@style/Widget.MaterialComponents.Button.TextButton" />
+        </LinearLayout>
+        <TextView android:textSize="12.0sp" android:gravity="end" android:id="@id/version_text_view" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="10.0dip" android:alpha="0.5" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/auto_layout" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:layout_gravity="center" android:layout_width="100.0dip" android:layout_height="100.0dip" android:contentDescription="@null" app:srcCompat="@drawable/ic_car" />
+        <TextView android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="10.0dip" android:text="@string/android_auto_mode_active" android:textAlignment="center" />
+        <TextView android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" android:textColor="@color/colorSecondaryText" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:text="@string/android_auto_mode_active_description" android:textAlignment="center" />
+    </LinearLayout>
+</FrameLayout>

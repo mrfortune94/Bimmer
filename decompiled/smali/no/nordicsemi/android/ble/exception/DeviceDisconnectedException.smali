@@ -1,0 +1,17 @@
+.class public Lno/nordicsemi/android/ble/exception/DeviceDisconnectedException;
+.super Lno/nordicsemi/android/ble/exception/ConnectionException;
+.source "SourceFile"
+
+
+# direct methods
+.method public constructor <init>()V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0}, Lno/nordicsemi/android/ble/exception/ConnectionException;-><init>()V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method

@@ -1,0 +1,108 @@
+.class Lio/sgsoftware/bimmerlink/activities/SoundTuningActivity$b;
+.super LF2/c;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lio/sgsoftware/bimmerlink/activities/SoundTuningActivity;->onCreate(Landroid/os/Bundle;)V
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x0
+    name = null
+.end annotation
+
+
+# instance fields
+.field final synthetic n:Lio/sgsoftware/bimmerlink/activities/SoundTuningActivity;
+
+
+# direct methods
+.method constructor <init>(Lio/sgsoftware/bimmerlink/activities/SoundTuningActivity;)V
+    .locals 0
+
+    .line 1
+    iput-object p1, p0, Lio/sgsoftware/bimmerlink/activities/SoundTuningActivity$b;->n:Lio/sgsoftware/bimmerlink/activities/SoundTuningActivity;
+
+    .line 2
+    .line 3
+    invoke-direct {p0}, LF2/c;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    return-void
+.end method
+
+
+# virtual methods
+.method protected a(Landroid/view/View;)V
+    .locals 1
+
+    .line 1
+    iget-object p1, p0, Lio/sgsoftware/bimmerlink/activities/SoundTuningActivity$b;->n:Lio/sgsoftware/bimmerlink/activities/SoundTuningActivity;
+
+    .line 2
+    .line 3
+    invoke-static {p1}, Lio/sgsoftware/bimmerlink/activities/SoundTuningActivity;->R(Lio/sgsoftware/bimmerlink/activities/SoundTuningActivity;)Z
+
+    .line 4
+    .line 5
+    .line 6
+    move-result p1
+
+    .line 7
+    if-eqz p1, :cond_0
+
+    .line 8
+    .line 9
+    return-void
+
+    .line 10
+    :cond_0
+    iget-object p1, p0, Lio/sgsoftware/bimmerlink/activities/SoundTuningActivity$b;->n:Lio/sgsoftware/bimmerlink/activities/SoundTuningActivity;
+
+    .line 11
+    .line 12
+    sget-object v0, Ljava/lang/Boolean;->TRUE:Ljava/lang/Boolean;
+
+    .line 13
+    .line 14
+    invoke-static {p1, v0}, Lio/sgsoftware/bimmerlink/activities/SoundTuningActivity;->S(Lio/sgsoftware/bimmerlink/activities/SoundTuningActivity;Ljava/lang/Boolean;)V
+
+    .line 15
+    .line 16
+    .line 17
+    invoke-static {}, Lio/sgsoftware/bimmerlink/App;->h()Lio/sgsoftware/bimmerlink/App;
+
+    .line 18
+    .line 19
+    .line 20
+    move-result-object p1
+
+    .line 21
+    invoke-virtual {p1}, Lio/sgsoftware/bimmerlink/App;->k()LD2/G;
+
+    .line 22
+    .line 23
+    .line 24
+    move-result-object p1
+
+    .line 25
+    new-instance v0, Lio/sgsoftware/bimmerlink/activities/SoundTuningActivity$b$a;
+
+    .line 26
+    .line 27
+    invoke-direct {v0, p0}, Lio/sgsoftware/bimmerlink/activities/SoundTuningActivity$b$a;-><init>(Lio/sgsoftware/bimmerlink/activities/SoundTuningActivity$b;)V
+
+    .line 28
+    .line 29
+    .line 30
+    invoke-virtual {p1, v0}, LD2/G;->o(LD2/G$M;)V
+
+    .line 31
+    .line 32
+    .line 33
+    return-void
+.end method
