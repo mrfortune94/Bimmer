@@ -156,7 +156,7 @@ jobs:
           exit 1
         }
         chmod +x zipalign
-        ./zipalign --version || echo "zipalign ready"
+        ./zipalign -h >/dev/null 2>&1 || echo "zipalign ready"
 
     - name: Optimize APK with zipalign (before signing)
       run: |
