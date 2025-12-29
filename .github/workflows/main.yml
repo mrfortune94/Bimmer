@@ -27,6 +27,7 @@ jobs:
 
     - name: Add LICENSE file
       run: |
+        mkdir -p decompiled_apk/assets
         cat > decompiled_apk/assets/LICENSE.txt << 'EOF'
         MIT License
 
