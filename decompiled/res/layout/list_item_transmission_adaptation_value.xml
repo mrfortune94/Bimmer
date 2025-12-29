@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:paddingTop="?listPreferredItemPaddingLeft" android:paddingBottom="?listPreferredItemPaddingRight" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="?listPreferredItemPaddingLeft" android:paddingEnd="?listPreferredItemPaddingRight"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" android:textColor="?android:textColorSecondary" android:id="@id/title_text_view" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="Kupplung A" android:layout_weight="1.0" />
-    <TextView android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" android:textColor="?android:textColorPrimary" android:layout_gravity="end" android:id="@id/value_text_view" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="100 ms" android:textAlignment="gravity" />
-</LinearLayout>

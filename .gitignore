@@ -1,5 +1,6 @@
 # APKTool output and build artifacts
 decompiled_apk/
+decompiled/
 extracted_apks/
 rebuilt_apk.apk
 aligned_apk.apk
@@ -11,6 +12,7 @@ aligned_apk.apk
 
 # APKTool
 apktool.jar
+apktool_*.jar
 apktool
 
 # Build tools
@@ -19,3 +21,6 @@ build-tools_*.zip
 
 # Temporary files
 *.tmp
+
+# Resources directory (extracted APKs)
+resources/
