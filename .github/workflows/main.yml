@@ -1,4 +1,4 @@
-name: Rebuild and Sign APK
+name: Rebuild APK
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - automate-rebuild-apk
 
 jobs:
-  build-and-sign-apk:
+  build-apk:
     runs-on: ubuntu-latest
 
     steps:
@@ -29,23 +29,8 @@ jobs:
       run: |
         apktool b decompiled_apk -o rebuilt_apk.apk
 
-    - name: Sign APK using jarsigner
-      env:
-        KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-        KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-      run: |
-        echo ${{ secrets.KEYSTORE }} | base64 -d > keystore.jks
-        jarsigner -keystore keystore.jks -storepass "$KEYSTORE_PASSWORD" rebuilt_apk.apk "$KEY_ALIAS"
-
-    - name: Optimize APK with zipalign
-      run: |
-        wget https://dl.google.com/android/repository/build-tools_r31.0.0-linux.zip
-        unzip -j build-tools_r31.0.0-linux.zip "*/zipalign" -d ./
-        chmod +x zipalign
-        ./zipalign -f 4 rebuilt_apk.apk signed_aligned_apk.apk
-
-    - name: Upload Signed APK
+    - name: Upload Rebuilt APK
       uses: actions/upload-artifact@v3
       with:
-        name: Signed-APK
-        path: signed_aligned_apk.apk
+        name: Rebuilt-APK
+        path: rebuilt_apk.apk
