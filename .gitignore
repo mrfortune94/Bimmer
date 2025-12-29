@@ -5,6 +5,7 @@ extracted_apks/
 rebuilt_apk.apk
 aligned_apk.apk
 *.apk
+*.idsig
 
 # Keystore files
 *.keystore
